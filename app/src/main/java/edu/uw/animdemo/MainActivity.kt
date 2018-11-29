@@ -3,6 +3,7 @@ package edu.uw.animdemo
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.GestureDetectorCompat
@@ -35,7 +36,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        //Log.v(TAG, event.toString());
+        Log.v(TAG, event.toString())
+        val pointerIndex = MotionEventCompat.getActionIndex(event)
+        val pointer = MotionEventCompat.getPointerId(event, pointerIndex)
+        val touches: MutableList<Int> = mutableListOf()
+
+
 
         val gesture = mDetector!!.onTouchEvent(event) //ask the detector to handle instead
         //if(gesture) return true; //if we don't also want to handle
@@ -77,6 +83,13 @@ class MainActivity : AppCompatActivity() {
             else -> return super.onTouchEvent(event)
         }
     }
+
+    fun addTouch(pointId: Int, x: Int, y: Int) {
+        DrawingSurfaceView(applicationContext, )
+
+    }
+
+
 
     private inner class MyGestureListener : GestureDetector.SimpleOnGestureListener() {
 
